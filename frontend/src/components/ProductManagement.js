@@ -161,7 +161,7 @@ function ProductManagement() {
           Please log in to view products
         </Typography>
         <Typography variant="body1">
-          <Link to="/login" style={{ color: '#1976d2', textDecoration: 'underline' }}>
+          <Link to="/" style={{ color: '#1976d2', textDecoration: 'underline' }}>
             Click here to log in
           </Link>
         </Typography>

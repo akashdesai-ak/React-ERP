@@ -1,0 +1,36 @@
+[{
+  "_id": {
+    "$oid": "680b695aca1be9c6e8526416"
+  },
+  "name": "Pepsi",
+  "price": 20,
+  "quantity": 2,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "680b696dca1be9c6e8526419"
+  },
+  "name": "Cake",
+  "price": 100,
+  "quantity": 10,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "680b6f26ca1be9c6e85264b8"
+  },
+  "name": "Fizz",
+  "price": 10,
+  "quantity": 1000,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "680b784dca1be9c6e8526825"
+  },
+  "name": "laptop",
+  "price": 123,
+  "quantity": 5,
+  "__v": 0
+}]

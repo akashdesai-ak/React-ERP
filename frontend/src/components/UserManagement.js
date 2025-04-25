@@ -155,7 +155,7 @@ function UserManagement() {
           Please log in to manage users
         </Typography>
         <Typography variant="body1">
-          <Link to="/login" style={{ color: '#1976d2', textDecoration: 'underline' }}>
+          <Link to="/" style={{ color: '#1976d2', textDecoration: 'underline' }}>
             Click here to log in
           </Link>
         </Typography>

@@ -1,0 +1,75 @@
+[{
+  "_id": {
+    "$oid": "680b71baca1be9c6e8526647"
+  },
+  "userId": {
+    "$oid": "680b616e92a8dbaf28b42cc6"
+  },
+  "products": [
+    {
+      "productId": {
+        "$oid": "680b695aca1be9c6e8526416"
+      },
+      "quantity": 12000,
+      "_id": {
+        "$oid": "680b747aca1be9c6e8526722"
+      }
+    }
+  ],
+  "total": 240000,
+  "status": "pending",
+  "createdAt": {
+    "$date": "2025-04-25T11:27:54.828Z"
+  },
+  "__v": 2
+},
+{
+  "_id": {
+    "$oid": "680b7465ca1be9c6e85266fb"
+  },
+  "userId": {
+    "$oid": "680b616e92a8dbaf28b42cc6"
+  },
+  "products": [
+    {
+      "productId": {
+        "$oid": "680b695aca1be9c6e8526416"
+      },
+      "quantity": 200,
+      "_id": {
+        "$oid": "680b7465ca1be9c6e85266fc"
+      }
+    }
+  ],
+  "total": 4000,
+  "status": "pending",
+  "createdAt": {
+    "$date": "2025-04-25T11:39:17.727Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "680b785dca1be9c6e8526830"
+  },
+  "userId": {
+    "$oid": "680b616e92a8dbaf28b42cc6"
+  },
+  "products": [
+    {
+      "productId": {
+        "$oid": "680b6f26ca1be9c6e85264b8"
+      },
+      "quantity": 520,
+      "_id": {
+        "$oid": "680b785dca1be9c6e8526831"
+      }
+    }
+  ],
+  "total": 5200,
+  "status": "pending",
+  "createdAt": {
+    "$date": "2025-04-25T11:56:13.559Z"
+  },
+  "__v": 0
+}]

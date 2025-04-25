@@ -15,7 +15,9 @@ import {
   Select,
   InputLabel,
   FormControl,
+  IconButton
 } from "@mui/material";
+import { Edit, Delete } from "@mui/icons-material";
 import {
   getOrders,
   addOrder,
@@ -259,6 +261,7 @@ function OrderManagement() {
               <CircularProgress size={24} />
             ) : editOrderId ? (
               "Update Order"
+              
             ) : (
               "Add Order"
             )}
@@ -316,7 +319,7 @@ function OrderManagement() {
                 <TableCell>₹{parseFloat(order.total).toFixed(2)}</TableCell>
                 <TableCell>{order.status}</TableCell>
                 <TableCell>
-                  <Button
+                  <IconButton
                     onClick={() => handleEdit(order)}
                     variant="outlined"
                     color="primary"
@@ -324,17 +327,17 @@ function OrderManagement() {
                     sx={{ mr: 1 }}
                     aria-label={`Edit order ${order._id}`}
                   >
-                    Edit
-                  </Button>
-                  <Button
+                    <Edit/>
+                  </IconButton>
+                  <IconButton
                     onClick={() => handleDelete(order._id)}
                     variant="outlined"
                     color="error"
                     disabled={loading}
                     aria-label={`Delete order ${order._id}`}
                   >
-                    Delete
-                  </Button>
+                    <Delete/>
+                  </IconButton>
                 </TableCell>
               </TableRow>
             ))}
