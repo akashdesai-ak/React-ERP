@@ -9,7 +9,7 @@ const productRoutes = require("./routes/products");
 const userRoutes = require("./routes/users");
 const orderRoutes = require("./routes/orders");
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.REACT_APP_API_URL || 5000;
 
 
 dotenv.config();
