@@ -14,6 +14,8 @@ import {
   useMediaQuery,
   useTheme,
   Avatar,
+  AppBar,
+  Toolbar,
 } from '@mui/material';
 import {
   Dashboard as DashboardIcon,
@@ -141,6 +143,33 @@ function Home() {
           minHeight: '100vh',
         }}
       >
+        {isMobile && (
+          <AppBar
+            position="static"
+            sx={{
+              mb: 2,
+              backgroundColor: theme.palette.background.paper,
+              color: theme.palette.text.primary,
+              boxShadow: 'none',
+              borderBottom: `1px solid ${theme.palette.divider}`,
+            }}
+          >
+            <Toolbar>
+              <IconButton
+                edge="start"
+                color="inherit"
+                aria-label="Open sidebar"
+                onClick={toggleDrawer}
+                sx={{ mr: 2 }}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Typography variant="h6" sx={{ flexGrow: 1 }}>
+                ERP System
+              </Typography>
+            </Toolbar>
+          </AppBar>
+        )}
         <Outlet />
       </Box>
     </Box>
