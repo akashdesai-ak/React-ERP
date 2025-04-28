@@ -1,5 +1,6 @@
 const express = require("express");
 const User = require("../models/User");
+const bcrypt = require("bcrypt");
 const router = express.Router();
 
 router.get("/", async (req, res) => {
@@ -7,8 +8,7 @@ router.get("/", async (req, res) => {
   res.json(users);
 });
 
-
-router.put('/:id', async (req, res) => {
+router.put("/:id", async (req, res) => {
   const { email, password, role } = req.body;
   try {
     const updateData = { email, role };
@@ -21,19 +21,30 @@ router.put('/:id', async (req, res) => {
       runValidators: true,
     });
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return res.status(404).json({ message: "User not found" });
     }
-    res.json({ message: 'User updated' });
+    res.json({ message: "User updated" });
   } catch (err) {
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ message: "Server error" });
   }
 });
 
 router.post("/", async (req, res) => {
   const { email, password, role } = req.body;
-  const validRoles = ['admin', 'user', 'manager', 'data-entry'];
+  const validRoles = ["admin", "user", "manager", "data-entry"];
+  const userRole = validRoles.includes(role) ? role : "user";
+
   const hashedPassword = await bcrypt.hash(password, 10);
-  const user = new User({ email, password: hashedPassword, role: validRoles.includes(role) ? role : 'user' });
+  const existingUser = await User.findOne({ email });
+  if (existingUser) {
+    return res.status(400).json({ message: "Email already in use" });
+  }
+
+  const user = new User({
+    email,
+    password: hashedPassword,
+    role: validRoles.includes(role) ? role : "user",
+  });
   await user.save();
   res.status(201).json({ message: "User created" });
 });
@@ -46,7 +57,7 @@ router.delete("/:id", async (req, res) => {
 // New endpoint to get valid roles
 router.get("/roles", async (req, res) => {
   try {
-    const roles = User.schema.path('role').enumValues; // Get enum values from schema
+    const roles = User.schema.path("role").enumValues; // Get enum values from schema
     res.json(roles);
   } catch (err) {
     res.status(500).json({ message: "Server error" });
