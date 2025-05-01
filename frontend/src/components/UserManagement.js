@@ -79,7 +79,13 @@ function UserManagement() {
     }
     setLoading(true);
     try {
-      const response = await addUser(userData);
+      const response = await addUser(userData,{
+        method: 'POST',
+        Headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData),
+      });
       console.log('Add user response:', response.data);
       setForm({ email: '', password: '', role: 'user' });
       const res = await getUsers();
@@ -163,7 +169,7 @@ function UserManagement() {
     );
   }
 
-  if (user?.role !== 'admin') {
+  if (user?.role !== 'admin' || 'manager') {
     return <Typography variant="h6">Access Denied</Typography>;
   }
 
