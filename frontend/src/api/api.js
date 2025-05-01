@@ -3,7 +3,7 @@ import axios from "axios";
  const API_URL = 'https://react-erp-vahu.onrender.com/api' || process.env.REACT_APP_API_URL || 5000;
 //  const API_URL = "http://localhost:5000/api";
 
-const axiosInstance = axios.create({
+const API = axios.create({
   baseURL: API_URL,
   headers: {
     "Content-Type": "application/json",
@@ -11,7 +11,7 @@ const axiosInstance = axios.create({
   },
 });
 
-axiosInstance.interceptors.request.use((config) => {
+API.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
@@ -56,12 +56,21 @@ export const updateProduct = (id, product) =>
   axios.put(`${API_URL}/products/${id}`, product);
 export const deleteProduct = (id) => axios.delete(`${API_URL}/products/${id}`);
 
-export const getUsers = () => axios.get(`${API_URL}/users`);
-export const updateUser = (id, user) => axios.put(`${API_URL}/users/${id}`, user);
-export const addUser = (user) => axios.post(`${API_URL}/users`, user);
-export const deleteUser = (id) => axios.delete(`${API_URL}/users/${id}`);
-
 export const getRoles = () => axios.get(`${API_URL}/users/roles`);
+
+export const getUsers = () => axios.get(`${API_URL}/users`);
+export const updateUser = (id, user) => axios.put(`${API_URL}/users/${id}`, {
+  email: user.email,
+  password: user.password,
+  role: user.role,
+ 
+});
+export const addUser = (user) => API.post(`${API_URL}/users`,{
+  email: user.email,
+  password: user.password,
+  role: user.role,
+});
+export const deleteUser = (id) => axios.delete(`${API_URL}/users/${id}`);
 
 export const getOrders = () => axios.get(`${API_URL}/orders`);
 export const addOrder = (order) => axios.post(`${API_URL}/orders`, order);

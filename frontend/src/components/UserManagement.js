@@ -79,10 +79,12 @@ function UserManagement() {
     }
     setLoading(true);
     try {
+      console.log('Before addUser call');
       const response = await addUser(userData);
+      console.log('After addUser call', response);
       console.log('Add user response:', response.data);
-      setForm({ email: '', password: '', role: 'user' });
       const res = await getUsers();
+      setForm({ email: '', password: '', role: 'user' });
       setUsers(res.data);
     } catch (err) {
       const errorMessage = err.response?.data?.message || 'Failed to add user';
@@ -120,8 +122,8 @@ function UserManagement() {
       const response = await updateUser(editUser._id, updateData);
       console.log('Update user response:', response.data);
       setEditUser(null);
-      setForm({ email: '', password: '', role: 'user' });
       const res = await getUsers();
+      setForm({ email: '', password: '', role: 'user' });
       setUsers(res.data);
     } catch (err) {
       const errorMessage = err.response?.data?.message || 'Failed to update user';
@@ -163,7 +165,7 @@ function UserManagement() {
     );
   }
 
-  if (user?.role !== 'admin' || 'manager') {
+  if (user?.role !== 'admin' || user?.role ==='manager') {
     return <Typography variant="h6">Access Denied</Typography>;
   }
 
