@@ -70,7 +70,7 @@ function UserManagement() {
     const userData = {
       email: form.email.trim(),
       password: form.password.trim(),
-      role: form.role,
+      role: form.role
     };
     console.log('Submitting user data:', userData);
     if (!validateForm(userData)) {
@@ -79,13 +79,7 @@ function UserManagement() {
     }
     setLoading(true);
     try {
-      const response = await addUser(userData,{
-        method: 'POST',
-        Headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userData),
-      });
+      const response = await addUser(userData);
       console.log('Add user response:', response.data);
       setForm({ email: '', password: '', role: 'user' });
       const res = await getUsers();
