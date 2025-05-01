@@ -70,7 +70,7 @@ function UserManagement() {
     const userData = {
       email: form.email.trim(),
       password: form.password.trim(),
-      role: form.role
+      role: form.role,
     };
     console.log('Submitting user data:', userData);
     if (!validateForm(userData)) {
