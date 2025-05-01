@@ -37,7 +37,7 @@ function UserManagement() {
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    if (user?.role === 'admin') {
+    if (user?.role === 'admin' || user?.role === 'manager') {
       setLoading(true);
       Promise.all([getUsers(), getRoles()])
         .then(([usersRes, rolesRes]) => {

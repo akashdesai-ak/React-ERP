@@ -32,7 +32,7 @@ router.put("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   const { email, password, role } = req.body;
   const validRoles = ["admin", "user", "manager", "data-entry"];
-  const userRole = validRoles.includes(role) ? role : "";
+  const userRole = validRoles.includes(role) ? role : "user";
 
   const hashedPassword = await bcrypt.hash(password, 10);
   const existingUser = await User.findOne({ email });
@@ -43,7 +43,7 @@ router.post("/", async (req, res) => {
   const user = new User({
     email,
     password: hashedPassword,
-    role: validRoles.includes(role) ? role : "",
+    role: validRoles.includes(role) ? role : "user",
   });
   await user.save();
   res.status(201).json({ message: "User created" });
